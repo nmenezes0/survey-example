@@ -8,7 +8,6 @@ def is_cabinet_office_email(email_address):
     return True
     
 
-
 class FeedbackForm(forms.Form):
     template_name = "feedback.html"
     email = forms.EmailField(required=False, validators=[is_cabinet_office_email])
