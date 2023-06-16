@@ -4,10 +4,9 @@ from django.core.exceptions import ValidationError
 
 
 def is_cabinet_office_email(email_address):
-    # TODO - update to raise a ValidationError for non-Cabinet Office emails
+    if "cabinetoffice.gov.uk" not in email_address:
+        raise ValidationError("Not a Cabinet Office email.")
     return True
-    
-
 
 class FeedbackForm(forms.Form):
     template_name = "feedback.html"
