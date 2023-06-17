@@ -1,9 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="govuk-template ">
   <body>
-    <head></head>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+      <!--[if !IE 8]><!-->
+        <link rel="stylesheet" href="/stylesheets/govuk-frontend-4.6.0.min.css">
+      <!--<![endif]-->
+      <!--[if IE 8]>
+        <link rel="stylesheet" href="/stylesheets/govuk-frontend-ie8-4.6.0.min.css">
+      <![endif]-->
+
+
+    </head>
+
+
+    <body class="govuk-template__body ">
+      <script>
+        document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+      </script>
+      <!-- component HTML -->
+      <script src="/javascript/govuk-frontend-4.6.0.min.js"></script>
+      <script>
+        window.GOVUKFrontend.initAll()
+      </script>
       {% block content %}
       {% endblock %}
+    </body>
+
     <footer></footer>
   </body>
 </html>
