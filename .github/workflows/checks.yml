@@ -22,3 +22,21 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip setuptools
         pip install -r requirements.lock
+        pip install -r requirements-dev.lock
+
+    - name: Run Tests
+      run: |
+        python3 manage.py test
+
+    - name: Run MyPy to check typing
+      run: |
+        python3 manage.py test
+
+    - name: Run isort to order imports
+      run: |
+        python3 isort
+
+    - name: Run Black to enforce code style
+      run: |
+        python3 black
+        
