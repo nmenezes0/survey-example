@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase, SimpleTestCase
 
 from pulse_survey.survey import forms
@@ -13,7 +14,7 @@ class FeedbackFormTest(TestCase):
         self.assertTrue("Enter a valid email address" in str(email_errors))
 
     def test_correct_email(self):
-        form = forms.FeedbackForm({"email": "test@example.com", "content": "some feedback"})
+        form = forms.FeedbackForm({"email": "test@cabinetoffice.gov.uk", "content": "some feedback"})
         form.is_valid()
         no_email_errors = "email" not in form.errors
         self.assertTrue(no_email_errors)
@@ -21,8 +22,14 @@ class FeedbackFormTest(TestCase):
 
 class CabinetOfficeValidationTest(SimpleTestCase):
     def test_is_cabinet_office_email(self):
-        valid_email = "valid@example.com"
+        valid_email = "valid@cabinetoffice.gov.uk"
         result = forms.is_cabinet_office_email(valid_email)
         self.assertTrue(result)
+
+    def test_is_not_cabinet_office_email(self):
+        invalid_email = "valid@mod.gov.uk"
+        with self.assertRaises(ValidationError) as error:
+            forms.is_cabinet_office_email(invalid_email)
+        self.assertEqual(error.exception.args[0], "a cabinet office email must be used")
 
 
