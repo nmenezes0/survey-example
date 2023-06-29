@@ -3,7 +3,9 @@ name: GitHub checks
 on:
   push:
     branches:
-      - '**'
+      - "main"
+
+  workflow_dispatch:
 
 jobs:
   check_web:
