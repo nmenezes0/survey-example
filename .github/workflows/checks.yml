@@ -39,4 +39,3 @@ jobs:
     - name: Run Black to enforce code style
       run: |
         python3 black
-        
