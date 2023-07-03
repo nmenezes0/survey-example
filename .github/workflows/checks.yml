@@ -32,6 +32,6 @@ jobs:
         # default set of ruff rules with GitHub Annotations
         # ruff --format=github --target-version=py38 .
 
-    - name: Test with unittest
+    - name: Test
       run: |
-        python -m unittest discover -s ./tests  -p 'test_*.py'
+        docker-compose up --build --force-recreate tests
