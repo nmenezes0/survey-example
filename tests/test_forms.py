@@ -21,8 +21,11 @@ class FeedbackFormTest(TestCase):
 
 class CabinetOfficeValidationTest(SimpleTestCase):
     def test_is_cabinet_office_email(self):
-        valid_email = "valid@example.com"
+        valid_email = "valid@cabinetoffice.gov.uk"
         result = forms.is_cabinet_office_email(valid_email)
         self.assertTrue(result)
-
+    def test_is_cabinet_office_email_invalid(self):
+        valid_email = "invalid@invalid.uk"
+        result = forms.is_cabinet_office_email(valid_email)
+        self.assertFalse(result)
 
