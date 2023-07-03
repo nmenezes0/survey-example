@@ -2,7 +2,8 @@ name: GitHub checks
 
 on:
   push:
-    - "**"
+    branches:
+      - "**"
 
 jobs:
   check_web:
